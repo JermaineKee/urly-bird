@@ -6,4 +6,5 @@ from django.shortcuts import render
 
 
 def redirect_url(request):
+    request_path = request.path
     return HttpResponseRedirect("http://www.google.com")
