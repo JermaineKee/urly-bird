@@ -1,11 +1,12 @@
-from django.db import models
 from datetime import datetime
+from django.db import models
+
 
 # Create your models here.
 
 
 class Short(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True, blank=True)
     bookmark = models.URLField()
     short_url = models.URLField()
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
@@ -17,7 +18,7 @@ class Short(models.Model):
 
 
 class Click(models.Model):
-    clicker_ID = models.ForeignKey(Short)
+    clicker_ID = models.ForeignKey(User)
     short_ID = models.ForeignKey(Short)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
 
