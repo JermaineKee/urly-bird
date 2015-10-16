@@ -1,10 +1,25 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
+
+
 class Short(models.Model):
     user = models.ForeignKey(User)
-    # bookmark
-    # short_url
-    # timestamp
-    # title
-    # description
+    bookmark = models.URLField()
+    short_url = models.URLField()
+    timestamp = models.DateTimeField(default=datetime.now, blank=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return str(self.short_url)
+
+
+class Click(models.Model):
+    clicker_ID = models.ForeignKey(Short)
+    short_ID = models.ForeignKey(Short)
+    timestamp = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return str(self.id)
