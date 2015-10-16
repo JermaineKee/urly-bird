@@ -19,8 +19,8 @@ class Short(models.Model):
 
 
 class Click(models.Model):
-    clicker_ID = models.ForeignKey(User, blank=True, null=True)
-    short_ID = models.ForeignKey(Short)
+    clicker = models.ForeignKey(User, blank=True, null=True)
+    short = models.ForeignKey(Short)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
