@@ -20,5 +20,5 @@ from bookmarks.views import redirect_url
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', redirect_url)
+    url(r'^\w', redirect_url)
 ]
