@@ -12,8 +12,9 @@ from hashids import Hashids
 
 
 def redirect_url(request):
-    request_path = request.path
-    return HttpResponseRedirect("http://www.google.com")
+    request_path = request.path[1:]
+    short_obj = Short.objects.get(short_url=request_path)
+    return HttpResponseRedirect(short_obj.bookmark)
 
 
 def create_short(request):
