@@ -117,6 +117,12 @@ body {
   font-weight: bold;
 }
 
+/*
+ * textbox
+ */
+.textbox {
+  color: #333;
+}
 
 /*
  * Footer
