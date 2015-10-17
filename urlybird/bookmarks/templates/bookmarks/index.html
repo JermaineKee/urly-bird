@@ -1,6 +1,7 @@
 {% extends "bookmarks/base.html" %}
 {% load bootstrap3 %}
 {% block content %}
+{% load widget_tweaks %}
 
 <div class="inner cover">
   <h1 class="cover-heading">Present Your URL</h1>
@@ -8,7 +9,7 @@
   <form method= "POST" action="{% url 'create_short' %}">
   {% csrf_token %}
   {# <input class="lead textbox" type="text" name="long_url" style='width: 70%;'><br><br> #}
-  {{ form.as_p }}
+  <p>{{ form.bookmark|add_class:"lead textbox" }}</p>
   <input class="btn btn-lg btn-default"
          type="submit"
          value="Submit">

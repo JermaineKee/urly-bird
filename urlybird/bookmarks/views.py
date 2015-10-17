@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from .forms import ShortForm
-from .models import Short
+from .models import Click, Short
 
 from hashids import Hashids
 
@@ -14,6 +14,8 @@ from hashids import Hashids
 def redirect_url(request):
     request_path = request.path[1:]
     short_obj = Short.objects.get(short_url=request_path)
+    click = Click(short_id=short_obj.id, timestamp=datetime.now())
+    click.save()
     return HttpResponseRedirect(short_obj.bookmark)
 
 
