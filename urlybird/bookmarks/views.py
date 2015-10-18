@@ -16,11 +16,13 @@ def redirect_url(request):
     short_obj = Short.objects.get(short_url=request_path)
     click = Click(short_id=short_obj.id, timestamp=datetime.now())
     click.save()
+    short_obj.click_count += 1
+    short_obj.save()
     return HttpResponseRedirect(short_obj.bookmark)
 
 
 def create_short(request):
-    hashids = Hashids(salt='tiyd python 2015-08')
+    hashids = Hashids(salt='tiyd python 2015-08', alphabet='abcdefghijklmnopqrstuvwxyz0123456789')
     short_hash = hashids.encode(Short.objects.last().id)
     if request.method == 'POST':
         form = ShortForm(request.POST)
@@ -31,6 +33,7 @@ def create_short(request):
                 short.user = request.user
             short.short_url = short_hash
             short.timestamp = datetime.now()
+            short.click_count = 0
             short.save()
 
             return render(request,
