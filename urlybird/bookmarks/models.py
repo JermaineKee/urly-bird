@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class Short(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     bookmark = models.URLField()
-    short_url = models.CharField()
+    short_url = models.CharField(max_length=255)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField()

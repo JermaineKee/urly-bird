@@ -47,12 +47,14 @@
                   {% if request.user.is_authenticated %}
 
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Welcome, {user.id} </a></li>
+                    <li><a href="#">Welcome, {{ user.username }} </a></li>
+                    <li><a href="/accounts/logout/">Logout</a></li>
 
                   {% else %}
 
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="/accounts/register/">Register</a></li>
 
 
                   {% endif %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'widget_tweaks',
     'bookmarks',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +111,11 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
+
+# Registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+
+
+LOGIN_REDIRECT_URL = '/'
