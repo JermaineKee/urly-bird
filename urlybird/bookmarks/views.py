@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate
-
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -50,3 +50,22 @@ def invalid_login(request):
 def logout(request):
     authenticate.logout(request)
     return render('logout.html')
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/accounts/register_success')
+
+    args = {}
+    args.update(request)
+
+    args['form'] = UserCreationForm()
+    print args
+    return render('register.html', args)
+
+
+def register_success(request):
+    return render('register_success.html')

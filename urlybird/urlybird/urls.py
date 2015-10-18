@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from bookmarks.views import *
+from bookmarks.views import redirect_url, create_short, index, auth_view,
+logout_success, loggedin, invalid_login, logout
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -31,4 +32,8 @@ urlpatterns = [
     url(r'^accounts/logout/$', logout, name='logout'),
     url(r'^accounts/loggedin/$', loggedin, name='loggedin'),
     url(r'^accounts/invalid/$', invalid_login, name='invalid_login'),
+
+    url(r'^accounts/register/$', register_user, name='register_user'),
+    url(r'^accounts/register_success/$',
+        register_success, name='register_success'),
 ]
