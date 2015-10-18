@@ -16,11 +16,19 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from bookmarks.views import create_short, index, redirect_url
+from bookmarks.views import *
 
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^short/', create_short, name='create_short'),
-    url(r'^\w', redirect_url)
+    url(r'^\w', redirect_url),
+
+
+    # user urls
+    url(r'^accounts/login/$', login, name='login'),
+    url(r'^acounts/auth/$', auth_view, name='auth_view'),
+    url(r'^accounts/logout/$', logout, name='logout'),
+    url(r'^accounts/loggedin/$', loggedin, name='loggedin'),
+    url(r'^accounts/invalid/$', invalid_login, name='invalid_login'),
 ]
