@@ -47,12 +47,12 @@
                   {% if request.user.is_authenticated %}
 
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Welcome, {user.id} </a></li>
+                    <li><a href="#">Welcome, {{ user.username }} </a></li>
 
                   {% else %}
 
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
 
 
                   {% endif %}

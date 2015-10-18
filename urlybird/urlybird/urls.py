@@ -19,6 +19,7 @@ from django.contrib import admin
 from bookmarks.views import create_short, redirect_url
 
 urlpatterns = [
+    url(r'^/login/$', 'django.contrib.auth.views.login', {'template_name': 'bookmarks/auth.html'}, name='login'),
     url(r'^$', create_short, name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^short/', create_short, name='create_short'),
