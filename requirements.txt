@@ -3,3 +3,4 @@ wheel==0.24.0
 django-bootstrap3==6.2.2
 psycopg2
 django-widget-tweaks
+fake-factory
