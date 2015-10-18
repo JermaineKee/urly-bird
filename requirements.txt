@@ -4,3 +4,4 @@ django-bootstrap3==6.2.2
 psycopg2
 django-widget-tweaks
 fake-factory
+django-registration-redux
