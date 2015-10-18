@@ -13,6 +13,7 @@ class Short(models.Model):
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
+    click_count = models.IntegerField()
 
     def __str__(self):
         return str(self.short_url)
