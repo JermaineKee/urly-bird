@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+
+from bookmarks.views import create_short, redirect_url
 
 urlpatterns = [
+    url(r'^/login/$', 'django.contrib.auth.views.login', {'template_name': 'bookmarks/auth.html'}, name='login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^$', create_short, name='index'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^short/', create_short, name='create_short'),
+    url(r'^\w', redirect_url)
 ]
